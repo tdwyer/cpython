@@ -135,7 +135,8 @@ def getaddresses(fieldvalues):
     will be returned in it's place.
 
     If the resulting list is greater than number of items in the fieldvalues
-    list, a list containing a single empty 2-tuple [('', '')] will be returned.
+    list a parsing error was occurred, in which case an empty list will be
+    returned in it's place.
     """
     fieldvalues = [str(v) for v in fieldvalues]
     fieldvalues = _pre_parse_validation(fieldvalues)
@@ -148,7 +149,7 @@ def getaddresses(fieldvalues):
         n += v.count(',') + 1
 
     if len(result) != n:
-        return [('', '')]
+        return []
 
     return result
 
